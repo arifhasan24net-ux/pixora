@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="description" content="Discover beautiful free AI-inspired images for wallpapers, websites, social media, and creative projects.">
+  <title>Pixora — Free Images for Every Idea</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Pixora home"><span class="brand-mark">✦</span><span>pixora</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#explore">Explore</a><a href="#categories">Categories</a><a href="#about">About</a>
+    </nav>
+    <a class="header-cta" href="#explore">Explore images <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span> YOUR NEXT IDEA STARTS HERE</div>
+        <h1>Great visuals.<br><span>Zero cost.</span></h1>
+        <p>Discover beautiful images for your projects, wallpapers, websites, and everyday inspiration.</p>
+        <form class="search-form" id="searchForm" role="search">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="Try “minimal background” or “nature”" aria-label="Search images">
+          <button type="submit">Search</button>
+        </form>
+        <div class="popular-searches"><span>Popular:</span><button data-search="nature">Nature</button><button data-search="business">Business</button><button data-search="abstract">Abstract</button></div>
+      </div>
+      <div class="hero-art" aria-label="Featured image collage">
+        <div class="hero-image hero-image-one"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85" alt="Mountain lake landscape"></div>
+        <div class="hero-image hero-image-two"><img src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=700&q=85" alt="Abstract colorful gradient"></div>
+        <div class="hero-image hero-image-three"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=85" alt="Bright modern workspace"></div>
+        <div class="floating-note"><span class="note-icon">✧</span><span><strong>Made for your ideas</strong><small>Explore. Create. Download.</small></span></div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Site features">
+      <div><span class="trust-icon">↓</span><span><strong>Free downloads</strong><small>No payment required</small></span></div>
+      <div><span class="trust-icon">✦</span><span><strong>Fresh inspiration</strong><small>Curated visual ideas</small></span></div>
+      <div><span class="trust-icon">♡</span><span><strong>Made for creators</strong><small>Projects, posts & more</small></span></div>
+    </section>
+
+    <section class="gallery-section" id="explore">
+      <div class="section-heading">
+        <div><div class="eyebrow">THE COLLECTION</div><h2>Find your kind of visual</h2><p>Explore the collection and download images for free.</p></div>
+        <span class="result-count" id="resultCount">12 images</span>
+      </div>
+      <div class="category-row" id="categories" aria-label="Filter by category">
+        <button class="category-chip active" data-category="All">All images</button>
+        <button class="category-chip" data-category="Abstract">Abstract</button>
+        <button class="category-chip" data-category="Nature">Nature</button>
+        <button class="category-chip" data-category="Business">Business</button>
+        <button class="category-chip" data-category="Lifestyle">Lifestyle</button>
+        <button class="category-chip" data-category="Architecture">Architecture</button>
+      </div>
+      <div class="ad-placeholder" aria-label="Advertisement placeholder"><span>ADVERTISEMENT</span><div>Your ad space can go here after your ad network approves the site.</div></div>
+      <div class="image-grid" id="imageGrid" aria-live="polite"></div>
+      <div class="empty-state" id="emptyState" hidden><span>⌕</span><h3>No images found</h3><p>Try a different keyword or category.</p><button id="clearFilters">Clear filters</button></div>
+    </section>
+
+    <section class="creator-banner" id="about">
+      <div class="banner-sparkle">✦</div><div><div class="eyebrow">A LITTLE MORE INSPIRATION</div><h2>Good ideas deserve<br>great visuals.</h2><p>Pixora is a growing collection built to help creators find visual inspiration without a price tag.</p></div><a href="#explore" class="banner-link">Browse the collection <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand" href="#"><span class="brand-mark">✦</span><span>pixora</span></a>
+    <p>Free visual inspiration for everyone.</p>
+    <div class="footer-links"><a href="about.html">About</a><a href="license.html">Image use</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div>
+    <small>© <span id="year"></span> Pixora. Images in this starter demo are external sample photos. Replace them with images you own or have rights to distribute.</small>
+  </footer>
+
+  <dialog class="image-dialog" id="imageDialog">
+    <button class="dialog-close" id="dialogClose" aria-label="Close image details">×</button>
+    <img id="dialogImage" src="" alt="">
+    <div class="dialog-details"><div class="dialog-copy"><span class="dialog-category" id="dialogCategory"></span><h2 id="dialogTitle"></h2><p id="dialogDescription"></p><div class="image-meta" aria-live="polite"><span><b>Dimensions</b><small id="dialogDimensions">Loading…</small></span><span><b>File size</b><small id="dialogFileSize">Loading…</small></span><span><b>Format</b><small id="dialogFormat">Loading…</small></span></div><p class="image-source">Source: <a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash license information</a></p></div><a class="download-button" id="dialogDownload" href="#">Download free ↓</a></div>
+    <p class="license-note">Before publishing, verify the license and usage rights for every image you upload.</p>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
