@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixora Admin Panel</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #f4f6fb;
+      color: #182033;
+      font-family: Arial, sans-serif;
+    }
+    main {
+      max-width: 600px;
+      margin: 25px auto;
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 5px 25px #0000000d;
+    }
+    h1 { margin-top: 0; color: #5546e8; }
+    p { color: #667085; }
+    label { display: block; margin-top: 16px; font-weight: bold; }
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 7px;
+      border: 1px solid #d7dce5;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      border: 0;
+      border-radius: 9px;
+      background: #5546e8;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .notice {
+      padding: 12px;
+      background: #fff4d6;
+      border-radius: 8px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Pixora Admin</h1>
+    <p>Manage your free AI stock images.</p><div class="notice">
+  Setup preview only. Images entered here are not published or saved yet.
+</div>
+
+<form id="imageForm">
+  <label for="title">Image title</label>
+  <input id="title" required placeholder="Beautiful nature">
+
+  <label for="category">Category</label>
+  <select id="category" required>
+    <option value="">Choose category</option>
+    <option>Nature</option>
+    <option>People</option>
+    <option>Business</option>
+    <option>Technology</option>
+    <option>Travel</option>
+    <option>Food</option>
+    <option>Abstract</option>
+  </select>
+
+  <label for="tags">Tags (comma separated)</label>
+  <input id="tags" placeholder="nature, landscape, green">
+
+  <label for="imageUrl">Image URL</label>
+  <input id="imageUrl" type="url" required placeholder="https://example.com/image.jpg">
+
+  <label for="license">License</label>
+  <select id="license">
+    <option>Pixora Free License</option>
+    <option>CC0</option>
+    <option>Other - verify permissions</option>
+  </select>
+
+  <label for="source">Source / creator</label>
+  <input id="source" placeholder="Pixora">
+
+  <button type="submit">Preview image details</button>
+</form>
+
+<div id="result" aria-live="polite"></div>
+
+  </main>  <script>
+    document.getElementById("imageForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const result = document.getElementById("result");
+      result.replaceChildren();
+
+      const heading = document.createElement("h2");
+      heading.textContent = document.getElementById("title").value;
+      result.appendChild(heading);
+
+      const details = document.createElement("p");
+      details.textContent =
+        "Category: " + document.getElementById("category").value +
+        " | Tags: " + document.getElementById("tags").value +
+        " | License: " + document.getElementById("license").value +
+        " | Source: " + document.getElementById("source").value;
+      result.appendChild(details);
+
+      const image = document.createElement("img");
+      image.src = document.getElementById("imageUrl").value;
+      image.alt = "Image preview";
+      image.style.maxWidth = "100%";
+      image.style.borderRadius = "10px";
+      image.onerror = function() {
+        result.append("Image preview could not be loaded.");
+      };
+      result.appendChild(image);
+    });
+  </script></body>
+</html> 
